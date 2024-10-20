@@ -1,13 +1,20 @@
-import Heder from "./component/heder";
+
+
+import './App.css'
+import Cart from './component/cart';
+import Navbar from './component/navbar';
 
 function App() {
-  return (
-    <div>
-      <Heder>
-        
-      </Heder>
-    </div>
-  );
+
+    return (
+      <div>
+          <Navbar/>
+           <Cart/>
+       
+     
+      </div>
+    );
+  
 }
 
-export default App;
+export default App
