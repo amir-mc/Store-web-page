@@ -2,7 +2,8 @@
 import { RiCloseCircleLine } from "react-icons/ri";
 import { useCartContext } from "../context";
 
-const CartItem = ({ id, imageUrl, title, price, quantity }) => {
+const CartItem = ({ id , imageUrl, title, price, quantity }) => {
+  const {Removeid}=useCartContext();
   const { remove, changeQuantity } = useCartContext();
   return (
     <div className="d-flex justify-content-between align-items-center mt-3">
@@ -27,7 +28,7 @@ const CartItem = ({ id, imageUrl, title, price, quantity }) => {
         <button
           className="btn btn-link text-danger pe-0"
           type="button"
-          onClick={() => remove(id)}
+          onClick={() => Removeid(id)}
         >
           <RiCloseCircleLine className="ms-1" />
           <span className="fs-sm">حذف</span>
