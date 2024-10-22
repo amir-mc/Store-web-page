@@ -1,3 +1,5 @@
+
+
  const Reducer =(state,action)=>{
      switch (action.type) {
          case 'CLEAR_CART':{
@@ -5,6 +7,30 @@
          }
          case 'REMOVE':{
             return    ({...state, cart:state.cart.filter(item=>item.id !== action.payload)})    
+        }
+        case 'UPDATE_QUAN':{
+            const tempCart = state.cart.map(item=>{
+                if(item.id === action.payload.id && action.payload.quantity >0){
+                    return({...item, quantity:action.payload.quantity} )} 
+                     return item;    
+            })
+          return({...state, cart:tempCart   })
+        }
+        case 'TOTALL':{
+           const {total, quantity}= state.cart.reduce((cartTotal , cartItem)=>{
+            const {price,quantity}=cartItem
+            const itemTotal=price*quantity;
+            cartTotal.total +=itemTotal
+            cartTotal.quantity +=quantity
+            return (cartTotal)
+           },{
+              total:0,
+            quantity:0
+           })
+           
+          return({...state,total,quantity})
+
+          
         }
           
     
