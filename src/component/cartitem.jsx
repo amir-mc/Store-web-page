@@ -2,9 +2,9 @@
 import { RiCloseCircleLine } from "react-icons/ri";
 import { useCartContext } from "../context";
 
-const CartItem = ({ id , imageUrl, title, price, quantity }) => {
-  const {Removeid}=useCartContext();
-  const { remove, changeQuantity } = useCartContext();
+const CartItem = ({ id , imageUrl, title, price, quantity, size }) => {
+  const {Removeid, Chquantity,sizeCart}=useCartContext();
+  //const { remove  } = useCartContext();
   return (
     <div className="d-flex justify-content-between align-items-center mt-3">
       <div className="d-block d-sm-flex align-items-center text-center text-sm-end">
@@ -23,8 +23,15 @@ const CartItem = ({ id , imageUrl, title, price, quantity }) => {
           className="form-control"
           type="number"
           value={quantity}
-          onChange={(e) => changeQuantity({id: id, quantity: +e.target.value})}
+          onChange={(e) => Chquantity({id: id, quantity: +e.target.value})}
         />
+        <label className="form-label">size</label>
+        <select id="cars" >
+          <option  value={size}>small</option>
+          <option  value={size}>medium</option>
+         <option  value={size}>large</option>
+      
+        </select>
         <button
           className="btn btn-link text-danger pe-0"
           type="button"
